@@ -1,0 +1,51 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Tajawal, Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+}
+.featured,
+.recommended {
+  width: 100%;
+}
+.banner {
+  height: 40rem;
+  margin-top: 2rem;
+  background: #f3f3f3;
+  width: 100%;
+  display: flex;
+}
+.banner-desc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5rem;
+  flex-basis: 50%;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  margin-bottom: 0.67em;
+}
+.banner-desc h1 {
+  font-size: 4.8rem;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+.banner-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-basis: 50%;
+  overflow: hidden;
+}
+.banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(5rem);
+}

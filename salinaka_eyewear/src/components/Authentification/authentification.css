@@ -1,0 +1,146 @@
+.auth-content {
+  width: 80rem;
+  height: auto;
+  margin: auto;
+}
+.auth {
+  border: 1px solid #c5c5c5;
+  display: flex;
+  justify-content: center;
+  padding: 1.6rem 3.2rem 3.2rem;
+}
+.auth-main {
+  width: 100%;
+}
+form {
+  display: block;
+  margin-top: 0em;
+  unicode-bidi: isolate;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #e1e1e1;
+  border: 1px solid #c5c5c5;
+  padding: 1.2rem 1.6rem;
+  display: inline-block;
+  position: relative;
+}
+.label-input {
+  padding: 1rem 1.2rem;
+  color: #696868;
+  border: none;
+}
+.label-input,
+.label-input:hover {
+  background: none;
+}
+.input-form {
+  padding: 10px 1.6rem !important;
+  border: 1px solid #c5c5c5;
+  font-size: 1.5rem !important;
+}
+.auth-action {
+  display: flex;
+  justify-content: space-between;
+}
+.auth-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 4.8rem;
+}
+.auth-divider h6 {
+  background: #f9f9f9;
+  padding: 1.2rem;
+  z-index: 1;
+}
+.auth-divider:after,
+.auth-divider:before {
+  content: "";
+  position: absolute;
+  height: 30%;
+  width: 1px;
+  background: #e1e1e1;
+}
+.auth-divider:before {
+  top: 25%;
+}
+.auth-divider:after {
+  bottom: 25%;
+}
+.auth-provider {
+  width: 51rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.auth-provider > button {
+  margin-bottom: 1.2rem;
+}
+.provider-facebook {
+  background: #0078ff;
+  color: #fff;
+  border: 1px solid #0078ff;
+}
+.auth-provider-button {
+  width: 100%;
+  font-size: 1.4rem;
+}
+.auth-provider-button .anticon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.6rem;
+  margin: auto;
+}
+.auth-provider-button * {
+  font-size: 1.4rem;
+}
+.provider-google {
+  background: #fff;
+  color: #3a3a3a;
+  border: 1px solid #c5c5c5;
+}
+.provider-google span {
+  flex-basis: 80%;
+  color: #4a4a4a;
+}
+.provider-github {
+  background: #24292e;
+  color: #fff;
+  border: 1px solid #24292e;
+}
+.auth-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  margin: auto;
+  background: #f2f2f2;
+  border: 1px solid #c5c5c5;
+  border-top: none;
+}
+.auth-info {
+  margin-right: 3.2rem;
+}
+
+.toast-error,
+.toast-error .toast-msg {
+  color: rgba(247, 45, 45, 0.986);
+}
+.toast-error {
+  border: 1px solid rgba(247, 45, 45, 0.986);
+  padding: 1.6rem;
+  background: rgba(254, 242, 242, 0.986);
+}
+/* .input-error {
+  border-color: red;
+} */
