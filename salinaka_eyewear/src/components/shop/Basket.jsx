@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,8 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { emptyCart } from "../../store/count";
 import { Modal } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import { UserContext } from "../../App";
 
 export default function Basket() {
+  const { showUser, setShowUser, userName, setUserName } =
+    useContext(UserContext);
   const [isDisabledPath, setIsDisabledPath] = useState(false);
   const location = useLocation();
   useEffect(() => {
@@ -20,7 +23,6 @@ export default function Basket() {
       setIsDisabledPath(false);
     }
   }, [location.pathname]);
-  console.log(isDisabledPath, location.pathname);
 
   //checkout
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -61,24 +63,24 @@ export default function Basket() {
 
   const closeDrawer = (anchor) => (event) => {
     if (
+      event &&
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
       return;
     }
-    if (closeRef.current && closeRef.current.contains(event.target)) {
+    if (event && closeRef.current && closeRef.current.contains(event.target)) {
+      setState({ ...state, [anchor]: false });
+    } else if (
+      event &&
+      basketRef.current &&
+      basketRef.current.contains(event.target)
+    ) {
+      return;
+    } else {
       setState({ ...state, [anchor]: false });
     }
-    if (basketRef.current && basketRef.current.contains(event.target)) {
-      return;
-    }
-    setState({ ...state, [anchor]: false });
   };
-
-  // const handleModalContentClick = (event) => {
-  //   event.stopPropagation(); // 阻止事件冒泡到父元素
-  // };
-
   const list = (anchor) => (
     <Box
       role="presentation"
@@ -126,16 +128,25 @@ export default function Basket() {
           </div>
           <button
             className="basket-checkout-button button"
-            onClick={() => setModalOpen(true)}
+            onClick={() => {
+              if (showUser) {
+                navigate("/checkout/step1");
+                closeDrawer("right")();
+              } else {
+                setModalOpen(true);
+              }
+            }}
             type="button"
-            disableAutoFocus
+            // disableAutoFocus
             disabled={cartItems.length === 0}
           >
             Check Out
           </button>
           <Modal
             open={modalOpen}
-            onClose={() => setModalOpen(false)}
+            onClose={() => {
+              setModalOpen(false);
+            }}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
@@ -149,8 +160,8 @@ export default function Basket() {
                   className="button button-border button-border-gray button-small"
                   style={{ marginRight: "2px" }}
                   onClick={() => {
-                    setModalOpen(false); // 关闭窗口
-                    closeDrawer(anchor); // 关闭抽屉
+                    setModalOpen(false);
+                    closeDrawer(anchor);
                   }}
                 >
                   Continue shopping
@@ -186,10 +197,6 @@ export default function Basket() {
     boxShadow: 24,
     p: 4,
   };
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
   return (
     <div>
       {["right"].map((anchor) => (

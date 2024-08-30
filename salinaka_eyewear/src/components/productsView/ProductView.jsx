@@ -95,16 +95,7 @@ export default function ProductView() {
     );
   };
 
-  // const productList = useSelector((state) => {
-  //   return state.countStore.data;
-  // });
-
   const dispatch = useDispatch();
-  // const remove = (id) => {
-  //   dispatch(removeBasket(id));
-  // };
-
-  //add to cart
   const [state, setState] = React.useState({
     open: false,
     vertical: "top",
@@ -170,9 +161,7 @@ export default function ProductView() {
           <br />
           <div>
             <span className="text-subtle">Lens Width and Frame Size</span>
-            {/* <div className="css-container">
-              <span className=""></span>
-            </div> */}
+
             <div>
               <FormControl sx={{ m: 1, width: 400, mt: 3 }}>
                 <Select
@@ -235,7 +224,6 @@ export default function ProductView() {
                 <Box>
                   <button
                     className="button button-small"
-                    // onClick={() => add(obj.id)}
                     onClick={() =>
                       add([obj.id, { vertical: "top", horizontal: "right" }])
                     }

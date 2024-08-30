@@ -100,7 +100,7 @@ export default function SignUp() {
                   <label
                     htmlFor="fullname"
                     className="label-input"
-                    style={{ color: nameError ? "red" : "inherit" }}
+                    style={{ color: nameError ? "red" : "" }}
                   >
                     {nameError || "* Full Name"}
                   </label>
@@ -121,7 +121,7 @@ export default function SignUp() {
                   <label
                     htmlFor="email"
                     className="label-input"
-                    style={{ color: emailError ? "red" : "inherit" }}
+                    style={{ color: emailError ? "red" : "" }}
                   >
                     {emailError || "* Email"}
                   </label>
@@ -142,7 +142,7 @@ export default function SignUp() {
                   <label
                     htmlFor="password"
                     className="label-input"
-                    style={{ color: pwError ? "red" : "inherit" }}
+                    style={{ color: pwError ? "red" : "" }}
                   >
                     {pwError || "* Password"}
                   </label>

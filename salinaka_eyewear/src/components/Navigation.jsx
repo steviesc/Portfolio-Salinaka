@@ -19,9 +19,7 @@ import { useSelector } from "react-redux";
 import Filter from "./shop/Filter";
 import ProductsData from "../ListData";
 import { UserContext } from "../App";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import UserNav from "./Navbar/userNav";
-// export const UserContext = createContext();
 
 export default function Navigation() {
   const numCartItems = useSelector((state) => {
@@ -93,7 +91,7 @@ export default function Navigation() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const handleSearch = (e) => {
     const query = e.target.value;
-    setSearchInput(query); // 更新 searchInput 状态
+    setSearchInput(query); 
     if (query) {
       const results = ProductsData.filter((product) => {
         return product.name.toLowerCase().includes(query.toLowerCase());

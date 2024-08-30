@@ -12,8 +12,8 @@ import { UserContext } from "../../App";
 export default function SignIn() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { showUser, setShowUser } = useContext(UserContext);
-  const { userName, setUserName } = useContext(UserContext);
+  const { showUser, setShowUser, userName, setUserName } =
+    useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -38,6 +38,7 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     instance
       .get("/signin")
       .then((res) => {
@@ -49,6 +50,8 @@ export default function SignIn() {
           console.log("User Data:", user);
           setShowUser(true);
           setUserName(`${user.name}`);
+          // save info in localStorage
+          localStorage.setItem("user", JSON.stringify({ name: user.name }));
           navigate("/home");
         } else {
           setLoginError(true);
@@ -75,7 +78,7 @@ export default function SignIn() {
                   <label
                     htmlFor="email"
                     className="label-input"
-                    style={{ color: emailError ? "red" : "inherit" }}
+                    style={{ color: emailError ? "red" : "" }}
                   >
                     {emailError || "Email"}
                   </label>
@@ -109,7 +112,10 @@ export default function SignIn() {
               </div>
               <br />
               <div className="auth-field auth-action">
-                <a href="" style={{ textDecoration: "underline" }}>
+                <a
+                  href="/forgot_password"
+                  style={{ textDecoration: "underline" }}
+                >
                   <span>Forgot password?</span>
                 </a>
                 <button className="button auth-button" type="submit">

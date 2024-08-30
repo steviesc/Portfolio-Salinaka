@@ -193,11 +193,11 @@ export default function Filter() {
                       onChange={handleChangeValue}
                       valueLabelDisplay="auto"
                       getAriaValueText={valuetext}
-                      min={56} // 设置最小值
-                      max={674} // 设置最大值
+                      min={56} 
+                      max={674} 
                       sx={{
                         "& .MuiSlider-track": {
-                          color: "orange", // 修改中间范围的颜色
+                          color: "orange", 
                         },
                       }}
                     />
